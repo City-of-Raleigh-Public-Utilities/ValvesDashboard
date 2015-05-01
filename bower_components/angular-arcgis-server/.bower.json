@@ -1,0 +1,40 @@
+{
+  "name": "angular-arcgis-server",
+  "main": "dist/angular-arcgis-server.js",
+  "homepage": "https://github.com/cwhite911/angular-arcgis-server",
+  "authors": [
+    "cwhite911 <smortopahri@gmail.com>"
+  ],
+  "description": "Angularjs utility for ArcGIS server",
+  "keywords": [
+    "angular-arcgis-server",
+    "angular",
+    "arcgis",
+    "arcgis server",
+    "ArcGIS",
+    "Server",
+    "geojson",
+    "leaflet"
+  ],
+  "license": "MIT",
+  "private": false,
+  "ignore": [
+    "npm-debug.log",
+    "bower_components",
+    "node_modules"
+  ],
+  "dependencies": {
+    "angular": "~1.3.6",
+    "angular-mocks": "~1.3.8"
+  },
+  "_release": "e3eff39524",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e3eff39524778f761b36122ddf1cc76b3d2a5fb5"
+  },
+  "_source": "git://github.com/cwhite911/angular-arcgis-server.git",
+  "_target": "*",
+  "_originalSource": "angular-arcgis-server",
+  "_direct": true
+}

@@ -1,0 +1,223 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding: 0;
+  /*background: #fff url('../images/')*/
+}
+
+.main-heading {
+  margin-bottom: 50px;
+}
+.navbar {
+  /*background: #86d3ff*/
+}
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+.top-row{
+  height: 100%;
+}
+.top-panel{
+  height: 800px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+table {
+  font-size: 11px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+.totalsReport{
+  margin: 2px 5px;
+}
+
+.panel-body{
+  padding:10px;
+}
+
+
+.scroll-tbody {
+  max-height: 653px;
+  max-width: 100%;
+  display: block;
+  overflow-y: auto;
+  overflow-x: auto;
+  width: 100%;
+}
+
+#table-features{
+  display: table;
+  width: 100%;
+}
+
+#table-values{
+  text-align: right;
+  padding-right: 25px;
+}
+
+
+
+#map {
+  margin: 150px 0;
+  padding-top: 50px;
+}
+
+.repairListScroll {
+  overflow-y: scroll;
+  width: 100%;
+  position: relative;
+}
+
+
+.table-headings {
+  background: #337ab7;
+  color: #fff;
+}
+
+.report-panel{
+  margin-top: 25px;
+}
+
+.mapNav{
+  background: #337ab7;
+  color: #fff;
+}
+
+.mapText{
+  color: #000000;
+}
+
+#print{
+  margin-bottom: 10px;
+}
+
+.legend {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    background: rgba(255,255,255, 0.9);
+    line-height: 18px;
+    border-radius: 5px;
+    color: #555;
+    width: 200px;
+}
+
+.legend i {
+    color: #777;
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #337ab7;
+  } /* the new scrollbar will have a flat appearance with the set background color */
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    } /* this will style the thumb, ignoring the track */
+
+    ::-webkit-scrollbar-button {
+      background-color: #7c2929;
+      } /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+      ::-webkit-scrollbar-corner {
+        background-color: black;
+        } /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+
+
+/* when hiding the picture */
+.ng-hide-add {
+  /*-webkit-animation: pulse 0.5s;
+    animation: pulse 0.5s;
+    display: block !important;*/
+}
+/* when showing the picture */
+.ng-hide-remove {
+   -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+    display: block !important;
+}
+
+.leaflet-control-layers.leaflet-control {
+display: none;
+}
