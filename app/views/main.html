@@ -5,23 +5,13 @@
       <img class="media-object" src="images/firehydrant-assets/scaled-at-50/Layer 1.png" alt="Hydrant">
   </div>
   <div class="media-body">
-    <h2 class="media-heading main-heading">Hydrant Inspection Dashboard</h2>
-    <p><a class="btn btn-lg btn-success" ng-href="" ng-click="gotoAnchor()">Select a Response Zone</a></p>
-    <small>Ensuring Safety One Hydrant at a Time</small>
+    <h2 class="media-heading main-heading">Valves Dashboard</h2>
+    <p><a class="btn btn-lg btn-success" ng-href="" ng-click="gotoAnchor()">Get Stats</a></p>
+    
   </div>
 </div>
 
 </div>
 
-<div class="container marketing animated fadeInRight">
-  <!-- Three columns of text below the carousel -->
-  <div class="row" id="stations">
-    <div class="col-lg-4" ng-repeat="dept in departments | orderBy: '+title'">
-      <a ng-href="#/responseZone/{{dept.title}}"><img class="img-rounded" ng-src="{{dept.icon}}" alt="Department Badge" width="140" height="140"></a>
-      <h2>{{dept.title}}</h2>
-      <p>{{dept.name}}</p>
-      <p><a class="btn btn-primary" ng-href="#/responseZone/{{dept.title}}" role="button">View details &raquo;</a></p>
-    </div><!-- /.col-lg-4 -->
-  </div><!-- /.row -->
-</div>
+
 </div>
