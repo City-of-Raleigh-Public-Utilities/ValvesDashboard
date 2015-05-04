@@ -6,7 +6,7 @@
  * @description
  * # totalsTable
  */
-angular.module('hydrantsDashboard')
+angular.module('valvesDashboard')
   .directive('totalsTable', function ($filter) {
     return {
       templateUrl: 'views/totals-table.html',

@@ -28,6 +28,7 @@ angular.module('valvesDashboard')
         today.setMilliseconds(0);
 
     var startDate = new Date(2015, 4, 1, 0, 0, 0);
+    var layers = ['System Valves', 'Control Valves'];
     var report = {
       inspected: {
         count: 0,
@@ -70,6 +71,7 @@ angular.module('valvesDashboard')
             f: 'json',
             where: 'INSPECTDATE IN NOT NULL',
             returnGeometry: false,
+            returnCountOnly: true
           }
         };
 

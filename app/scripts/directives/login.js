@@ -6,7 +6,7 @@
  * @description
  * # login
  */
-angular.module('hydrantsDashboard')
+angular.module('valvesDashboard')
   .directive('loginForm', [ 'agsFactory', '$location', '$localStorage', function (agsFactory, $location, $localStorage) {
         return {
           restrict: 'E',
