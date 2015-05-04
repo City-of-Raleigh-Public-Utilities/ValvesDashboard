@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('hydrantsDashboard', [
+  .module('valvesDashboard', [
     'ngAnimate',
     'ngCookies',
     'ngResource',

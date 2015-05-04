@@ -7,8 +7,13 @@
  * # hydrantEvents
  * Factory in the hydrantsDashboardApp.
  */
-angular.module('hydrantsDashboard')
-  .factory('hydrantEvents', ['leafletData', 'icons', '$q', '$timeout', function (leafletData, icons, $q, $timeout) {
+
+
+
+
+
+angular.module('valvesDashboard')
+  .factory('valveEvents', ['leafletData', 'icons', '$q', '$timeout', function (leafletData, icons, $q, $timeout) {
 
     //Constant Colors
     var blue = '#0b3af8',

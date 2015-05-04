@@ -7,7 +7,7 @@
  * # ContactsCtrl
  * Controller of the hydrantsDashboardApp
  */
-angular.module('hydrantsDashboard')
+angular.module('valvesDashboard')
   .controller('ContactsCtrl', function ($scope) {
-  
+
   });

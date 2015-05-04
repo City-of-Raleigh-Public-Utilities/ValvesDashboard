@@ -7,8 +7,17 @@
  * # hydrantStats
  * Factory in the hydrantsDashboardApp.
  */
-angular.module('hydrantsDashboard')
-  .factory('hydrantStats', ['$filter', 'agsFactory', '$localStorage', function ($filter, agsFactory, $localStorage) {
+
+ //  # of valves inspected
+ // # of valves inoperable
+ // # of valves need repair
+ // # of valves contractor cutoff = true
+ // # of valves permalogger = true
+ //
+ // Then the spreadsheet attached should have all attributes of all valves that are inoperable, need repair, contractor cutoff = true or permalogger = true
+
+angular.module('valvesDashboard')
+  .factory('valveStats', ['$filter', 'agsFactory', '$localStorage', function ($filter, agsFactory, $localStorage) {
 
     //Private
     var token = $localStorage.token;

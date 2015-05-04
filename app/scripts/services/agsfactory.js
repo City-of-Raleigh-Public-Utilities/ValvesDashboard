@@ -7,7 +7,7 @@
  * # agsFactory
  * Factory in the hydrantsDashboardApp.
  */
-angular.module('hydrantsDashboard')
+angular.module('valvesDashboard')
   .factory('agsFactory', ['Ags', '$http', '$q', '$localStorage', '$location', function (Ags, $http, $q, $localStorage, $location) {
 
     // Add Server Urls
@@ -69,14 +69,14 @@ angular.module('hydrantsDashboard')
           //Contain Response Districts
           publicUtilMS: testServer.setService({
             folder: 'PublicUtility',
-            service: 'HydrantInspection',
+            service: 'ValvesDataCollection',
             server: 'MapServer',
           }),
 
           //Contains Hydrant data
           publicUtilFS: testServer.setService({
             folder: 'PublicUtility',
-            service: 'HydrantInspection',
+            service: 'ValvesDataCollection',
             server: 'FeatureServer',
           }),
           //Add mapstest for geometry services

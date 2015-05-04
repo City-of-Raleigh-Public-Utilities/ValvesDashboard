@@ -7,7 +7,7 @@
  * # icons
  * Factory in the hydrantsDashboardApp.
  */
-angular.module('hydrantsDashboard')
+angular.module('valvesDashboard')
   .factory('icons', function () {
     var local_icons = {
         defaultIcon: {},

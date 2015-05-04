@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the hydrantsDashboardApp
  */
-angular.module('hydrantsDashboard')
+angular.module('valvesDashboard')
   .controller('MainCtrl',['$anchorScroll', '$location', '$scope', 'FIREDEPTS', function ($anchorScroll, $location, $scope, FIREDEPTS) {
     $scope.departments = FIREDEPTS;
 

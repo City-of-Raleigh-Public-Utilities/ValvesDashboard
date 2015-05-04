@@ -7,8 +7,8 @@
  * # ResponsezoneCtrl
  * Controller of the hydrantsDashboardApp
  */
-angular.module('hydrantsDashboard')
-  .controller('ResponsezoneCtrl', ['$scope', '$route', '$routeParams', '$location', 'FIREDEPTS', 'agsFactory', 'leafletData', '$filter', '$interval', 'hydrantStats', 'hydrantEvents', '$timeout', '$localStorage', 'icons', '$rootScope',
+angular.module('valvesDashboard')
+  .controller('ResponsezoneCtrl', ['$scope', '$route', '$routeParams', '$location', 'FIREDEPTS', 'agsFactory', 'leafletData', '$filter', '$interval', 'valveStats', 'valveEvents', '$timeout', '$localStorage', 'icons', '$rootScope',
     function ($scope, $route, $routeParams, $location, FIREDEPTS, agsFactory, leafletData, $filter, $interval, hydrantStats, hydrantEvents, $timeout, $localStorage, icons, $rootScope) {
 
 
@@ -110,7 +110,7 @@ angular.module('hydrantsDashboard')
 
        $rootScope.markers.clearLayers();
        hydrantEvents.resetOptions($scope.mapFilterSelection.graphOptions);
-       
+
        $rootScope.markers.addLayer(L.geoJson($scope.geojson.data, {pointToLayer: $scope.mapFilterSelection.setIcons}));
 
 
