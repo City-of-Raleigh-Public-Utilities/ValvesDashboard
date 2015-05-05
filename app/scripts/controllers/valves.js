@@ -21,7 +21,7 @@ angular.module('valvesDashboard')
 
      $scope.responseZone = $routeParams.zone;
 
-     $scope.badge = '';
+     $scope.badge = './images/butterfly.jpg';
      //Base map setup
      angular.extend($scope, {
        defaults: {
