@@ -17,7 +17,7 @@
  // Then the spreadsheet attached should have all attributes of all valves that are inoperable, need repair, contractor cutoff = true or permalogger = true
 
 angular.module('valvesDashboard')
-  .factory('valveStats', ['$filter', 'agsFactory', '$localStorage', function ($filter, agsFactory, $localStorage) {
+  .factory('valveStats', ['$filter', 'agsFactory', '$localStorage', '$q', function ($filter, agsFactory, $localStorage, $q) {
 
     //Private
     var token = $localStorage.token;
@@ -61,24 +61,36 @@ angular.module('valvesDashboard')
 
 
       getCheckedStats: function (geom){
-        var options = {
-          layer: 'System Valves',
-          geojson: false,
-          actions: 'query',
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          params: {
-            token: token,
-            f: 'json',
-            where: 'INSPECTDATE IN NOT NULL',
-            returnGeometry: false,
-            returnCountOnly: true
+        var promiseList = [];
+
+        layers.forEach(function(layer){
+
+          for (var i in report){
+            var options = {
+              layer: layer,
+              geojson: false,
+              actions: 'query',
+              headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+              params: {
+                token: token,
+                f: 'json',
+                where: report[i].where,
+                returnGeometry: false,
+                returnCountOnly: true
+              }
+            };
+
+            promiseList.push(agsFactory.publicUtilFS.request(options));
+
           }
-        };
+
+        });
+
 
 
 
           //return promise
-          return agsFactory.publicUtilFS.request(options);
+          return $q.all(promiseList);
 
         // });
 

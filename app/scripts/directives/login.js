@@ -35,7 +35,7 @@ angular.module('valvesDashboard')
                 // }
               },
               function(err){
-                $location.url('/');
+                $location.url('/valves');
               });
             };
           },

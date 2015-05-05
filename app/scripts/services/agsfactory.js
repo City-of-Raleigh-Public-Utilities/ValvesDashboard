@@ -46,7 +46,7 @@ angular.module('valvesDashboard')
               return true;
             }
             else {
-              $location.path('/');
+              $location.path('/valves');
               return false;
             }
 

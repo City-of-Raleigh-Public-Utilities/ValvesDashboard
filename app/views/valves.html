@@ -1,0 +1,141 @@
+<div class="row top-row">
+  <div class="col-md-3 animated zoomIn">
+    <!-- <div class="col-xs-6 col-md-9 animated zoomIn fullview"> -->
+      <div class="panel panel-primary top-panel">
+        <div class="panel-heading">Reports</div>
+        <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12 animated zoomIn">
+            <div class="media">
+            <div class="media-left media-middle">
+                <img class="media-object animated flip" style="height: 150px; width: 150px;" ng-src="{{badge}}" alt="badge">
+            </div>
+            <div class="media-body media-middle">
+              <h2 class="media-heading main-heading">{{$routeParams.zone}}</h2>
+            </div>
+          </div>
+            <totals-table data="reportTotals.daily" title="today" ></totals-table>
+            <totals-table data="reportTotals.total" title="'Project'" ></totals-table>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9 animated zoomIn">
+      <div class="panel panel-primary top-panel">
+        <div class="panel-heading">Map</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3">
+              <div ng-hide="selectedHydrant.properties" class="panel panel-primary">
+                <div class="panel-heading">Actions</div>
+                <div class="panel-body">
+                  Hover or click on hydrant
+                </div>
+              </div>
+              <totals-table data="selectedHydrant.properties" title="selectedHydrant.properties.FACILITYID" view="'attributes'"></totals-table>
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <label for="mapSearch">Search: </label>
+                        <input id="mapSearch" class="mapText" ng-model="searchText" placeholder="type" ng-keyup="searchMap($event, searchText, geojson)"><div cg-busy="{promise:searchPromise ,message:'Searching Hydrants'}"></div>
+                      </div>
+                      <div class="form-group">
+                        <label for="mapSearch">Filter: </label>
+                        <select id="mapFilter" class="mapText" ng-options="mapFilter.name for mapFilter in mapFilterOptions" ng-model="mapFilterSelection" ng-change="updateFilter()">
+                          <div cg-busy="{promise:updateFilter(),message:'Filtering Hydrants'}"></div>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="panel-body">
+                    <leaflet defaults="defaults" layers="layers"  width="100%" height="653px" legend="legend"><div cg-busy="{promise:hydrantPromise,message:'Loading Hydrants'}"></div></leaflet>
+                    <div id="line" class="panel panel-primary">
+                      <div class="panel-heading">Graphs - {{mapFilterSelection.name}}</div>
+                      <div class="panel-body">
+                        <canvas  class="chart chart-bar" data="data" labels="chartlabels" colours="colours"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- {{$route}}
+{{$location}} -->
+
+<!-- </div> -->
+<div class="row">
+  <div class="col-md-12 animated zoomIn">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Repairs List</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-2">
+            Repair Lists: <select ng-options="repair.name for repair in needsRepair" ng-model="selected"></select>
+          </div>
+          <div class="col-md-2">
+            Search: <input ng-model="searchText">
+          </div>
+          <div id="print" class="col-md-1 col-md-offset-7">
+            <button  type="button" class="btn btn-success btn-sm" csv-header="headers" ng-csv="printCSV(selected.data)" filename="{{selected.name}}.csv">Export to CSV</button>
+          </div>
+        </div>
+        <table class="repairList table table-hover">
+          <thead>
+            <!-- <tr>
+              <th colspan="2">
+                Repair Lists: <select ng-options="repair.name for repair in needsRepair" ng-model="selected"></select>
+              </th>
+              <th colspan="4">Search: <input ng-model="searchText"></th>
+              <th id="print" colspan="7"><button type="button" class="btn btn-success" csv-header="headers" ng-csv="printCSV(selected.data)" filename="{{selected.name}}.csv">Export to CSV</button></th>
+            </tr> -->
+            <tr class="table-headings">
+              <th>Raleigh ID</th>
+              <th>Address</th>
+              <th>Ownership</th>
+              <th>Manufacturer</th>
+              <th>Year</th>
+              <th>Valve Diameter</th>
+              <th>Pumper Nozzle</th>
+              <th>Side Nozzle</th>
+              <th>Operable</th>
+              <th>Needs Repair</th>
+              <th>Notes</th>
+              <th>RFD_Notes</th>
+              <th>Checked</th>
+              <th>Station</th>
+            </tr>
+          </thead>
+          <tbody class="repairListScroll">
+            <tr ng-repeat="feature in selected.data | filter:searchText" ng-mouseover="zoomToFeature(feature)" ng-mouseleave="clearFeature()">
+              <td>{{feature.attributes.FACILITYID}}</td>
+              <td>{{feature.attributes.STNUM}} {{feature.attributes.STNAME}} {{feature.attributes.STTYPE}}</td>
+              <td ng-if="feature.attributes.OWNEDBY">Private</td>
+              <td ng-if="!feature.attributes.OWNEDBY">Public</td>
+              <td>{{feature.attributes.MANUFACTURER || 'N/A'}}</td>
+              <td>{{feature.attributes.HYDRANTYEAR || 'N/A'}}</td>
+              <td>{{feature.attributes.VALVESIZE || 'N/A'}}</td>
+              <td>{{feature.attributes.PUMPERNOZZLETYPE || 'N/A'}}</td>
+              <td>{{feature.attributes.SIDENOZZLETYPE || 'N/A'}}</td>
+              <td ng-if="feature.attributes.OPERABLE === 'Y'">{{'YES' || 'N/A'}}</td>
+              <td ng-if="feature.attributes.OPERABLE === 'N'">{{'No' || 'N/A'}}</td>
+              <td ng-if="feature.attributes.REPAIRNEED">{{'True' || 'N/A'}}</td>
+              <td ng-if="!feature.attributes.REPAIRNEED">{{'False' || 'N/A'}}</td>
+              <td>{{feature.attributes.NOTES || 'N/A'}}</td>
+              <td>{{feature.attributes.RFD_NOTES || 'N/A'}}</td>
+              <td>{{feature.attributes.CHECKED || 'N/A'}}</td>
+              <td>{{feature.attributes.RFD_STATION || 'N/A'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
