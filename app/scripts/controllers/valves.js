@@ -25,6 +25,11 @@ angular.module('valvesDashboard')
      $scope.badge = './images/butterfly.jpg';
      //Base map setup
      angular.extend($scope, {
+       raleigh: {
+         lat: 35.779385463030465,
+         lng:-78.63876342773438,
+         zoom: 11
+       },
        defaults: {
            zoomControl: false,
            tileLayer: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
