@@ -12,8 +12,6 @@ angular.module('valvesDashboard')
 
     // Add Server Urls
     var mapsServer = new Ags({'host': 'maps.raleighnc.gov', protocol: 'https'}),
-        testServer = new Ags({'host': 'mapstest.raleighnc.gov', protocol: 'http'}),
-
 
 
         // baseUrl = 'https://maps.raleighnc.gov/arcgis/rest/services/PublicUtility/FireHydrants/FeatureServer';
@@ -37,7 +35,7 @@ angular.module('valvesDashboard')
       services = {
 
           login: function (user, password) {
-            return testServer.requestToken(user, password, 60);
+            return mapsServer.requestToken(user, password, 60);
           },
 
           isTokenValid: function (exp){
@@ -67,14 +65,14 @@ angular.module('valvesDashboard')
           // }),
 
           //Contain Response Districts
-          publicUtilMS: testServer.setService({
+          publicUtilMS: mapsServer.setService({
             folder: 'PublicUtility',
             service: 'ValvesDataCollection',
             server: 'MapServer',
           }),
 
           //Contains Hydrant data
-          publicUtilFS: testServer.setService({
+          publicUtilFS: mapsServer.setService({
             folder: 'PublicUtility',
             service: 'ValvesDataCollection',
             server: 'FeatureServer',

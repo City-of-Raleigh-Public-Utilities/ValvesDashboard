@@ -15,7 +15,8 @@ angular.module('valvesDashboard')
     //  $scope.$location = $location;
      $scope.$routeParams = $routeParams;
 
-     agsFactory.isTokenValid($localStorage.expires);
+    var valid = agsFactory.isTokenValid($localStorage.expires);
+
 
      $scope.token = $localStorage.token;
 
@@ -40,16 +41,121 @@ angular.module('valvesDashboard')
            },
          },
            overlays: {
-             Hydrants: {
-               name: 'Hydrants',
+             permalogger: {
+               name: 'Permalogger',
                type: 'dynamic',
-               url: 'http://mapstest.raleighnc.gov/arcgis/rest/services/PublicUtility/HydrantInspection/MapServer',
-               visible: true,
+               url: 'http://maps.raleighnc.gov/arcgis/rest/services/PublicUtility/ValvesDataCollection/MapServer',
+               visible: false,
               layerParams: {
                 token: $scope.token
               },
                layerOptions: {
                  layers: [1],
+                 opacity: 1,
+                 attribution: 'Copyright:© 2015 City of Raleigh',
+                position: 'back'
+               }
+             },
+             permalogger: {
+               name: 'Contractor Cut Off',
+               type: 'dynamic',
+               url: 'http://maps.raleighnc.gov/arcgis/rest/services/PublicUtility/ValvesDataCollection/MapServer',
+               visible: false,
+              layerParams: {
+                token: $scope.token
+              },
+               layerOptions: {
+                 layers: [0],
+                 opacity: 1,
+                 attribution: 'Copyright:© 2015 City of Raleigh',
+                position: 'back'
+               }
+             },
+             rpsv: {
+               name: 'Repair Needed - System Valves',
+               type: 'dynamic',
+               url: 'http://maps.raleighnc.gov/arcgis/rest/services/PublicUtility/ValvesDataCollection/MapServer',
+               visible: false,
+              layerParams: {
+                token: $scope.token
+              },
+               layerOptions: {
+                 layers: [2],
+                 opacity: 1,
+                 attribution: 'Copyright:© 2015 City of Raleigh',
+                position: 'back'
+               }
+             },
+             rpcv: {
+               name: 'Repair Needed - Control Valves',
+               type: 'dynamic',
+               url: 'http://maps.raleighnc.gov/arcgis/rest/services/PublicUtility/ValvesDataCollection/MapServer',
+               visible: false,
+              layerParams: {
+                token: $scope.token
+              },
+               layerOptions: {
+                 layers: [3],
+                 opacity: 1,
+                 attribution: 'Copyright:© 2015 City of Raleigh',
+                position: 'back'
+               }
+             },
+             systemvalves: {
+               name: 'System Valves',
+               type: 'dynamic',
+               url: 'http://maps.raleighnc.gov/arcgis/rest/services/PublicUtility/ValvesDataCollection/MapServer',
+               visible: true,
+              layerParams: {
+                token: $scope.token
+              },
+               layerOptions: {
+                 layers: [5],
+                 opacity: 1,
+                 attribution: 'Copyright:© 2015 City of Raleigh',
+                position: 'back'
+               }
+             },
+             controlvalves: {
+               name: 'Control Valves',
+               type: 'dynamic',
+               url: 'http://maps.raleighnc.gov/arcgis/rest/services/PublicUtility/ValvesDataCollection/MapServer',
+               visible: true,
+              layerParams: {
+                token: $scope.token
+              },
+               layerOptions: {
+                 layers: [4],
+                 opacity: 1,
+                 attribution: 'Copyright:© 2015 City of Raleigh',
+                position: 'back'
+               }
+             },
+             pressureZone: {
+               name: 'Pressure Zones',
+               type: 'dynamic',
+               url: 'http://maps.raleighnc.gov/arcgis/rest/services/PublicUtility/ValvesDataCollection/MapServer',
+               visible: true,
+              layerParams: {
+                token: $scope.token
+              },
+               layerOptions: {
+                 layers: [6],
+                 opacity: 0.5,
+                 attribution: 'Copyright:© 2015 City of Raleigh',
+                position: 'back'
+               }
+             },
+             grid: {
+               name: 'Grid',
+               type: 'dynamic',
+               url: 'http://maps.raleighnc.gov/arcgis/rest/services/PublicUtility/ValvesDataCollection/MapServer',
+               visible: true,
+              layerParams: {
+                token: $scope.token
+              },
+               layerOptions: {
+                 layers: [7],
                  opacity: 0.5,
                  attribution: 'Copyright:© 2015 City of Raleigh',
                 position: 'back'
@@ -59,11 +165,21 @@ angular.module('valvesDashboard')
         },
     });
 
+if(valid){
     valveStats.getCheckedStats().then(function(params){
-      console.log(params);
+      params.forEach(function(result){
+        if(result.error){
+          console.log('No attribute');
+        }
+
+      });
+
 
     },
     function(err){
       console.log(err);
-    })
-  }]);
+    });
+
+}
+
+}]);

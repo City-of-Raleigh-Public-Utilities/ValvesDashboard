@@ -33,7 +33,7 @@ angular.module('valvesDashboard')
       inspected: {
         count: 0,
         name: '# of Valves Inspected',
-        where: 'INSPECTDATE IN NOT NULL'
+        where: 'INSPECTDATE IS NOT NULL'
       },
       inoperable: {
         count: 0,
@@ -75,12 +75,11 @@ angular.module('valvesDashboard')
                 token: token,
                 f: 'json',
                 where: report[i].where,
-                returnGeometry: false,
                 returnCountOnly: true
               }
             };
 
-            promiseList.push(agsFactory.publicUtilFS.request(options));
+            promiseList.push(agsFactory.publicUtilMS.request(options));
 
           }
 
