@@ -61,7 +61,7 @@ angular.module('valvesDashboard')
                 position: 'back'
                }
              },
-             permalogger: {
+             cco: {
                name: 'Contractor Cut Off',
                type: 'dynamic',
                url: 'http://maps.raleighnc.gov/arcgis/rest/services/PublicUtility/ValvesDataCollection/MapServer',
