@@ -19,7 +19,7 @@ angular.module('valvesDashboard')
       },
       link: function postLink(scope, element, attrs) {
 
-        scope.defaultTitle = scope.view ? 'FACILITYID: ' : 'Hydrant Totals for ';
+        scope.defaultTitle = scope.view ? 'FACILITYID: ' : 'Valves Totals for ';
 
       }
     };

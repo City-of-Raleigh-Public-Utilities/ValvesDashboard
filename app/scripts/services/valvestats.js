@@ -59,7 +59,7 @@ angular.module('valvesDashboard')
 
     var Stats = {
 
-
+      report: report,
       getCheckedStats: function (geom){
         var promiseList = [];
 

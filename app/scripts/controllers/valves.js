@@ -170,15 +170,18 @@ angular.module('valvesDashboard')
         },
     });
 
+$scope.report = valveStats.report;
 if(valid){
+  var types = ['inspected', 'inoperable', 'needRepair', 'contractor', 'permalogger'];
+      types = types.concat(types);
     valveStats.getCheckedStats().then(function(params){
-      params.forEach(function(result){
-        if(result.error){
-          console.log('No attribute');
+      for (var i = 0, l = params.length; i < l; i++){
+        if(params[i].error){}
+        else{
+          $scope.report[types[i]].count+= params[i].count;
         }
-
-      });
-
+      }
+      console.log($scope.report);
 
     },
     function(err){
