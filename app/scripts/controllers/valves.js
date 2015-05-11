@@ -190,7 +190,7 @@ angular.module('valvesDashboard')
                 token: $scope.token
               },
                layerOptions: {
-                 layers: [7],
+                 layers: [8],
                  opacity: 0.5,
                  attribution: 'Copyright:© 2015 City of Raleigh',
                 position: 'back'
