@@ -1,1 +1,32 @@
-<p>This is the reports view.</p>
+<div class="row">
+  <div class="col-md-12 animated zoomIn">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Report List</div>
+      <div class="panel-body reportList">
+        <div class="row">
+          <div class="col-md-2">
+            Report Type: <select ng-options="item.name for item in layerList" ng-model="layer" ng-change="getReport()"></select>
+          </div>
+          <div class="col-md-2">
+            Search: <input ng-model="searchText">
+          </div>
+          <div id="print" class="col-md-1 col-md-offset-7">
+            <button  type="button" class="btn btn-success btn-sm" csv-header="headers" ng-csv="printCSV(selected.data)" filename="{{layer}}{{today}}.csv">Export to CSV</button>
+          </div>
+        </div>
+        <table id="reportList" class="table table-hover">
+          <thead>
+            <tr class="table-headings">
+              <th ng-repeat="field in data.fields">{{field.alias}}</th>
+            </tr>
+          </thead>
+          <tbody class="reportList">
+            <tr ng-repeat="feature in data.features | filter:searchText" ng-mouseover="zoomToFeature(feature)" ng-mouseleave="clearFeature()">
+              <td ng-repeat="attr in feature.attributes">{{attr}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,11 +22,14 @@ angular.module('valvesDashboard')
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           params: {
             token: token,
-            f: 'json'
+            f: 'json',
+            where: '1=1',
+            outSR: 4326,
+            outFields: '*'
           }
         };
 
-        return agsFactory.publicUtilFS(options);
+        return agsFactory.publicUtilFS.request(options);
 
       }
     };
