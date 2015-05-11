@@ -136,6 +136,36 @@ angular.module('valvesDashboard')
                 position: 'back'
                }
              },
+             pressureMains: {
+               name: 'Water Pressure Mains',
+               type: 'dynamic',
+               url: 'http://gis.raleighnc.gov/arcgis/rest/services/PublicUtility/WaterDistribution/MapServer/',
+               visible: true,
+              layerParams: {
+                // token: $scope.token
+              },
+               layerOptions: {
+                 layers: [11],
+                 opacity: 1,
+                 attribution: 'Copyright:© 2015 City of Raleigh',
+                position: 'back'
+               }
+             },
+             laterals: {
+               name: 'Water Lateral Lines',
+               type: 'dynamic',
+               url: 'http://gis.raleighnc.gov/arcgis/rest/services/PublicUtility/WaterDistribution/MapServer/',
+               visible: true,
+              layerParams: {
+                // token: $scope.token
+              },
+               layerOptions: {
+                 layers: [13],
+                 opacity: 1,
+                 attribution: 'Copyright:© 2015 City of Raleigh',
+                position: 'back'
+               }
+             },
              pressureZone: {
                name: 'Pressure Zones',
                type: 'dynamic',
