@@ -7,17 +7,27 @@
  * # repots
  * Factory in the hydrantsDashboard.
  */
-angular.module('hydrantsDashboard')
-  .factory('repots', function () {
-    // Service logic
-    // ...
+angular.module('valvesDashboard')
+  .factory('repots', ['agsFactory', '$localStorage', function (agsFactory, $localStorage) {
 
-    var meaningOfLife = 42;
+    var token = $localStorage.token;
 
     // Public API here
     return {
-      someMethod: function () {
-        return meaningOfLife;
+      getReport: function (layer) {
+        var options = {
+          layer: layer,
+          geojson: false,
+          actions: 'query',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          params: {
+            token: token,
+            f: 'json'
+          }
+        };
+
+        return agsFactory.publicUtilFS(options);
+
       }
     };
-  });
+  }]);
