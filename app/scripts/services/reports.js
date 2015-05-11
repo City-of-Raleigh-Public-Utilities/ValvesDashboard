@@ -8,7 +8,7 @@
  * Factory in the hydrantsDashboard.
  */
 angular.module('valvesDashboard')
-  .factory('repots', ['agsFactory', '$localStorage', function (agsFactory, $localStorage) {
+  .factory('reports', ['agsFactory', '$localStorage', function (agsFactory, $localStorage) {
 
     var token = $localStorage.token;
 

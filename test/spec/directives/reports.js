@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: repots', function () {
+describe('Directive: reports', function () {
 
   // load the directive's module
   beforeEach(module('valvesDashboard'));

@@ -7,7 +7,7 @@
  * # repots
  */
 angular.module('valvesDashboard')
-  .directive('repots', function () {
+  .directive('reports', [ function () {
     return {
       templateUrl: 'views/reports.html',
       restrict: 'E',
