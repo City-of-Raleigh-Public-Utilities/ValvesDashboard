@@ -22,7 +22,65 @@
           </thead>
           <tbody class="reportList">
             <tr ng-repeat="feature in data.features | filter:searchText" ng-mouseover="zoomToFeature(feature)" ng-mouseleave="clearFeature()">
-              <td ng-repeat="attr in feature.attributes">{{attr}}</td>
+              <td>{{feature.attributes.OBJECTID}}</td>
+              <td>{{feature.attributes.FACILITYID}}</td>
+              <td>{{feature.attributes.INSTALLDATE | date : short}}</td>
+              <td>{{feature.attributes.VALVETYPE}}</td>
+              <td ng-if="feature.attributes.OPERABLE === 'Y'">Yes</td>
+              <td ng-if="feature.attributes.OPERABLE === 'N'">No</td>
+              <td ng-if="feature.attributes.PRESSUREZONE === 0">False</td>
+              <td ng-if="feature.attributes.PRESSUREZONE === 1">True</td>
+              <td ng-if="feature.attributes.HYDRANTFLAG === 0">False</td>
+              <td ng-if="feature.attributes.HYDRANTFLAG === 1">True</td>
+              <td ng-if="feature.attributes.MHACCESS === 0">False</td>
+              <td ng-if="feature.attributes.MHACCESS === 1">True</td>
+              <td ng-if="feature.attributes.CURROPEN === 0">False</td>
+              <td ng-if="feature.attributes.CURROPEN === 1">True</td>
+              <td ng-if="feature.attributes.NORMALLYOPEN === 0">False</td>
+              <td ng-if="feature.attributes.NORMALLYOPEN === 1">True</td>
+              <td ng-if="feature.attributes.CLOCKTOCLOSE === 0">False</td>
+              <td ng-if="feature.attributes.CLOCKTOCLOSE === 1">True</td>
+              <td>{{feature.attributes.TURNSTOCLOSE}}</td>
+              <td ng-if="feature.attributes.MOTORIZED === 0">False</td>
+              <td ng-if="feature.attributes.MOTORIZED === 1">True</td>
+              <td>{{feature.attributes.DEPTH}}</td>
+              <td ng-if="feature.attributes.ACTIVEFLAG === 1">Active</td>
+              <td ng-if="feature.attributes.ACTIVEFLAG === 2">Inactive</td>
+              <td ng-if="feature.attributes.ACTIVEFLAG === 3">Proposed</td>
+              <td ng-if="feature.attributes.OWNEDBY === 0">City of Raleigh</td>
+              <td ng-if="feature.attributes.OWNEDBY === 1">Private</td>
+              <td ng-if="feature.attributes.OWNEDBY === 2">Other</td>
+              <td ng-if="feature.attributes.MAINTBY === 0">City of Raleigh</td>
+              <td ng-if="feature.attributes.MAINTBY === 1">Private</td>
+              <td ng-if="feature.attributes.MAINTBY === 2">Other</td>
+              <td>{{feature.attributes.NOTES}}</td>
+              <td>{{feature.attributes.EDITEDBY}}</td>
+              <td>{{feature.attributes.EDITEDON | date : short}}</td>
+              <td>{{feature.attributes.CREATEDBY}}</td>
+              <td>{{feature.attributes.CREATEDON | date : short}}</td>
+              <td>{{feature.attributes.PRESSUREZONE_1}}</td>
+              <td>{{feature.attributes.REGION}}</td>
+              <td>{{feature.attributes.GRID}}</td>
+              <td>{{feature.attributes.JURISDICTION}}</td>
+              <td>{{feature.attributes.ROTATION}}</td>
+              <td ng-if="feature.attributes.ENABLED === 0">False</td>
+              <td ng-if="feature.attributes.ENABLED === 1">True</td>
+              <td>{{feature.attributes.DIAMETER}}</td>
+              <td>{{feature.attributes.ACCEPTDATE | date : short}}</td>
+              <td>{{feature.attributes.WARRANTYEND | date : short}}</td>
+              <td ng-if="feature.attributes.PERMALOGGER === 0">False</td>
+              <td ng-if="feature.attributes.PERMALOGGER === 1">True</td>
+              <td ng-if="feature.attributes.LEAK_DETECTED === 0">False</td>
+              <td ng-if="feature.attributes.LEAK_DETECTED === 1">True</td>
+              <td ng-if="feature.attributes.CHECKED === 0">False</td>
+              <td ng-if="feature.attributes.CHECKED === 1">True</td>
+              <td>{{feature.attributes.INSPECTDATE | date : short}}</td>
+              <td ng-if="feature.attributes.REPAIRNEED === 0">False</td>
+              <td ng-if="feature.attributes.REPAIRNEED === 1">True</td>
+              <td ng-if="feature.attributes.CONTRACTOR_CUT_OFF === 0">False</td>
+              <td ng-if="feature.attributes.CONTRACTOR_CUT_OFF === 1">True</td>
+              <td>{{feature.attributes.ISSUE1}}</td>
+              <td>{{feature.attributes.ISSUE2}}</td>
             </tr>
           </tbody>
         </table>
