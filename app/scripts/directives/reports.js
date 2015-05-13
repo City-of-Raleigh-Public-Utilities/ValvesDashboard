@@ -38,7 +38,7 @@ angular.module('valvesDashboard')
           });
 
           scope.getReport = function(){
-            reports.getReport(scope.layer.name)
+            scope.newReportPromise = reports.getReport(scope.layer.name)
               .then(function(res){
                 if(res.error){
                   console.log(res.error);
