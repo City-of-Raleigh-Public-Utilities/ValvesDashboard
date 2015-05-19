@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/City-of-Raleigh-Public-Utilities/ValvesDashboard.svg)](https://travis-ci.org/City-of-Raleigh-Public-Utilities/ValvesDashboard)
+
 # valves dashboard
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)

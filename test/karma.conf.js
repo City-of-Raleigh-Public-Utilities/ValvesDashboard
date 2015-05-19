@@ -44,6 +44,7 @@ module.exports = function(config) {
       'bower_components/leaflet.zoomhome/dist/leaflet.zoomhome.min.js',
       'bower_components/Chart.js/Chart.js',
       'bower_components/angular-chart.js/dist/angular-chart.js',
+      'bower_components/ng-grid/build/ng-grid.js',
       // endbower
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
