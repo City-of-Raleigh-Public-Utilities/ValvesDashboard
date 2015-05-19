@@ -21,7 +21,8 @@ angular
     'leaflet-directive',
     'cgBusy',
     'ngCsv',
-    'chart.js'
+    'chart.js',
+    'ngGrid'
   ])
   .config(function ($routeProvider, $httpProvider) {
     $routeProvider

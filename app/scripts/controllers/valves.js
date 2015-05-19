@@ -8,8 +8,8 @@
  * Controller of the hydrantsDashboard
  */
 angular.module('valvesDashboard')
-  .controller('ValvesCtrl', ['$scope', '$route', '$routeParams', '$location', 'agsFactory', 'leafletData', '$filter', '$interval', 'valveStats', 'valveEvents', '$timeout', '$localStorage', 'icons', '$rootScope',
-    function ($scope, $route, $routeParams, $location, agsFactory, leafletData, $filter, $interval, valveStats, valveEvents, $timeout, $localStorage, icons, $rootScope) {
+  .controller('ValvesCtrl', ['$scope', '$route', '$routeParams', '$location', 'agsFactory', 'leafletData', '$filter', '$interval', 'valveStats', 'valveEvents', '$timeout', '$localStorage', 'icons', '$rootScope', 'reports',
+    function ($scope, $route, $routeParams, $location, agsFactory, leafletData, $filter, $interval, valveStats, valveEvents, $timeout, $localStorage, icons, $rootScope, reports) {
     //Get Route Details
     //  $scope.$route = $route;
     //  $scope.$location = $location;
@@ -217,6 +217,71 @@ if(valid){
     function(err){
       console.log(err);
     });
+
+
+    $scope.today = $filter('date')(new Date(), 'yyyyMMdd');
+
+    $scope.layerList = [
+      {name:'Contractor Cut Off - System Valves'},
+      {name:'Permalogger - System Valves'},
+      {name:'Repair Needed - System Valves'},
+      {name:'Repair Needed - Control Valves'}
+    ];
+
+    $scope.layer = $scope.layerList[0];
+
+    $scope.columnDefs = [];
+
+    $scope.gridOptions = {
+      data: 'reportData',
+      filterOptions: {filterText: '', useExternalFilter: true},
+      enableColumnResize: true,
+      enableSorting: true,
+      // showFilter: true,
+      // columnDefs: []
+    };
+
+    console.log($scope);
+
+
+    reports.getReport($scope.layer.name)
+      .then(function(res){
+        if(res.error){
+          console.log(res.error);
+        }
+        else {
+          console.log(res);
+          $scope.reportData = [];
+          res.features.forEach(function(f){
+            $scope.reportData.push(f.attributes);
+          });
+          // return scope.reportData;
+          // scope.data = res.features;
+
+        }
+      }, function(err){
+        console.log(err);
+      });
+
+      $scope.getReport = function(){
+        $scope.newReportPromise = reports.getReport($scope.layer.name)
+          .then(function(res){
+            if(res.error){
+              console.log(res.error);
+            }
+            else {
+              $scope.reportData = [];
+              res.features.forEach(function(f){
+                $scope.reportData.push(f.attributes);
+              });
+            }
+          }, function(err){
+            console.log(err);
+          });
+      };
+
+
+
 
 }
 

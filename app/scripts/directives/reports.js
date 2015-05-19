@@ -24,6 +24,21 @@ angular.module('valvesDashboard')
 
         scope.layer = scope.layerList[0];
 
+        scope.$parent.myData = [{name: "Moroni", age: 50},
+                     {name: "Tiancum", age: 43},
+                     {name: "Jacob", age: 27},
+                     {name: "Nephi", age: 29},
+                     {name: "Enos", age: 34}];
+        scope.gridOptions = {
+          data: 'myData',
+          filterOptions: {filterText: '', useExternalFilter: false},
+          enableColumnResize: true,
+          enableSorting: true
+        };
+
+        console.log(scope);
+
+
         reports.getReport(scope.layer.name)
           .then(function(res){
             if(res.error){
@@ -31,7 +46,13 @@ angular.module('valvesDashboard')
             }
             else {
               console.log(res);
-              scope.data = res;
+              scope.reportData = [];
+              res.features.forEach(function(f){
+                scope.reportData.push(f.attributes);
+              });
+              // return scope.reportData;
+              // scope.data = res.features;
+
             }
           }, function(err){
             console.log(err);
@@ -44,14 +65,19 @@ angular.module('valvesDashboard')
                   console.log(res.error);
                 }
                 else {
-                  console.log(res);
-                  scope.data = res;
+                  scope.reportData = [];
+                  res.features.forEach(function(f){
+                    scope.reportData.push(f.attributes);
+                  });
                 }
               }, function(err){
                 console.log(err);
               });
           };
       }
+
+
+
     };
 
 

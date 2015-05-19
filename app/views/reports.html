@@ -14,7 +14,8 @@
             <button  type="button" class="btn btn-success btn-sm" csv-header="headers" ng-csv="printCSV(selected.data)" filename="{{layer}}{{today}}.csv">Export to CSV</button>
           </div>
         </div>
-        <table id="reportList" class="table table-hover">
+        <div class="gridStyle" ng-grid="gridOptions"></div>
+        <!-- <table id="reportList" class="table table-hover">
           <thead>
             <tr class="table-headings">
               <th ng-repeat="field in data.fields">{{field.alias}}</th>
@@ -83,7 +84,7 @@
               <td>{{feature.attributes.ISSUE2}}</td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
       </div>
     </div>
   </div>
