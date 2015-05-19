@@ -31,6 +31,13 @@ angular.module('valvesDashboard')
 
         return agsFactory.publicUtilFS.request(options);
 
+      },
+      setColumnDef: function (fields){
+        var columnDef = [];
+        fields.forEach(function(f){
+          columnDef.push({field: f.name, displayName: f.alias, width: f.length })
+        });
+        return columnDef;
       }
     };
   }]);

@@ -230,15 +230,15 @@ if(valid){
 
     $scope.layer = $scope.layerList[0];
 
-    $scope.columnDefs = [];
+    $scope.columnDefs = [{field: 'name', displayName: 'Name'}];
 
     $scope.gridOptions = {
       data: 'reportData',
       filterOptions: {filterText: '', useExternalFilter: true},
       enableColumnResize: true,
       enableSorting: true,
-      // showFilter: true,
-      // columnDefs: []
+      showFilter: true,
+      columnDefs: $scope.colDef | []
     };
 
     console.log($scope);
@@ -251,6 +251,7 @@ if(valid){
         }
         else {
           console.log(res);
+          $scope.colDef = reports.setColumnDef(res.fields);
           $scope.reportData = [];
           res.features.forEach(function(f){
             $scope.reportData.push(f.attributes);
